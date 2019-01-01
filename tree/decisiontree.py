@@ -62,11 +62,7 @@ class DecisionTree:
         if true_sum == 0 or false_sum == 0:
             return 0
 
-        true_sum_p = true_sum / true_sum + false_sum
-        false_sum_p = false_sum / true_sum + false_sum
+        true_sum_p = true_sum / (true_sum + false_sum)
+        false_sum_p = false_sum / (true_sum + false_sum)
 
         return -1 * true_sum_p * np.log2(true_sum_p) + (-1) * false_sum_p * np.log2(false_sum_p)
-
-de = DecisionTree()
-de.get_each_attribute()
-print(de.get_attribute_information_gain(de.attributes_dict['a1'], de.attributes_dict['class']))
