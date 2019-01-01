@@ -66,3 +66,22 @@ class DecisionTree:
         false_sum_p = false_sum / (true_sum + false_sum)
 
         return -1 * true_sum_p * np.log2(true_sum_p) + (-1) * false_sum_p * np.log2(false_sum_p)
+
+    def get_root_node(self):
+        information_gain = {}
+        for i in range(9):
+            attribute = self.attributes[i]
+            information_gain[attribute] = self.get_attribute_information_gain(self.attributes_dict[attribute], self.attributes_dict['class'])
+
+        min_value = 100
+        min_key = ''
+        for key, value in information_gain.items():
+            if value < min_value:
+                min_value = value
+                min_key = key
+
+        return min_key
+
+de = DecisionTree()
+de.get_each_attribute()
+print(de.get_root_node())
