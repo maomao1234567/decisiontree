@@ -1,5 +1,5 @@
 import numpy as np
-import pandas as pd
+
 
 class DecisionTree:
     tree = [0 for i in range(300)]
@@ -96,6 +96,7 @@ class DecisionTree:
         data_set = self.data_list
         attribute_dict = self.get_each_attribute(data_set, len(self.attributes))
         attribute_position, first_node = self.choose_attribute(attribute_dict)
+        self.tree[1] = first_node
 
         # 计算第二层的节点
         first_node_by_x_set = self.classification_by_attribute(
@@ -112,6 +113,9 @@ class DecisionTree:
             data_set, attribute_position, 'o')
         attribute_dict = self.get_each_attribute(first_node_by_o_set, len(self.attributes))
         attribute_position_3, second_node_3 = self.choose_attribute(attribute_dict)
+        self.tree[100] = second_node_1
+        self.tree[101] = second_node_2
+        self.tree[102] = second_node_3
 
         # 计算第三层的节点
         second_node_1_by_x_set = self.classification_by_attribute(
@@ -138,6 +142,11 @@ class DecisionTree:
             first_node_by_b_set, attribute_position_2, 'b')
         attribute_dict = self.get_each_attribute(second_node_2_by_b_set, len(self.attributes))
         attribute_position_8, third_node_5 = self.choose_attribute(attribute_dict)
+        self.tree[200] = third_node_1
+        self.tree[201] = third_node_2
+        self.tree[202] = third_node_3
+        self.tree[203] = third_node_4
+        self.tree[204] = third_node_5
 
 
 de = DecisionTree()
