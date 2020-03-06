@@ -1,0 +1,10 @@
+peline:
+
+  code_inspection:
+    image: kevinanew/python-driver:1.4.2
+    commands:
+      - pip3 install -q  -r src/requirements.txt
+      - yapf -dr . | (! grep '.')
+      - isort -rc . --check-only --diff
+    when:
+      event: push
